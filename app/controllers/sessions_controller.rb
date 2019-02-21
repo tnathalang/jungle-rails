@@ -1,16 +1,20 @@
 class SessionsController < ApplicationController
     def new
+        @user = User.new
     end
 
     def create
-        user = User.find_by_email(params[:email])
+        @user = User.find_by_email(user_params[:email])
+        puts "helloooooo #{@user.inspect}"
         #if user exists and the password is correct.
-        if user && user.authenticate(params[:password])
+
+        if @user && @user.authenticate(user_params[:password])
             #save uder id inside browser cookie.
-            session[:user_id] = user.user_id
-            redirect_to '/'
+            session[:user_id] = @user.id
+            redirect_to root_path
         else
-            redirect_to '/login'
+            flash.now.alert = "Incorrect email or password, try again."
+            redirect_to "/login"
         end
     end
 
@@ -18,5 +22,12 @@ class SessionsController < ApplicationController
         session[:user_id] = nil 
         redirect_to '/login'
     end
-
+    
+    private
+    def user_params
+        params.require(:user).permit(
+            :email,
+            :password
+        )
+    end
 end
