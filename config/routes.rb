@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     resources :products, :categories, except: [:edit, :update, :show]
   end
 
+  get '/login' to: 'session#new'
+  post '/login' to: 'session#create'
+  get '/logout' to: 'sessions#destroy'
+
 
   get '/signup' to: 'users#new'
   post '/users' to: 'users#create'
