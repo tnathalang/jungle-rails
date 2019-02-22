@@ -16,7 +16,11 @@
       </thead>
       <tbody>
         <% enhanced_cart.each do |item| %>
+        <%if  @order.line_items[:quantity] > 0 do %>
           <%= render 'item', product: item[:product], quantity: item[:quantity].to_i %>
+        <%else%>
+           <h4>Your cart appears to be empty</h4>
+         <%= link_to 'root', 'products#index'  %> 
         <% end %>
       </tbody>
       <tfoot>
@@ -48,5 +52,7 @@
       <% end %>
     </div>
   </div>
+
+
 
 </section>
