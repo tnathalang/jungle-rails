@@ -15,9 +15,14 @@
         </tr>
       </thead>
       <tbody>
+        <%if  !enhanced_cart.empty? %>
         <% enhanced_cart.each do |item| %>
           <%= render 'item', product: item[:product], quantity: item[:quantity].to_i %>
-        <% end %>
+            <% end %>
+        <% else %>
+            <h4> Your cart appears to be empty </h4> 
+         <%= link_to 'root', 'products#index'  %>
+            <% end %>
       </tbody>
       <tfoot>
         <tr>
@@ -48,5 +53,7 @@
       <% end %>
     </div>
   </div>
+
+<%= console %>
 
 </section>
