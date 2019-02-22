@@ -6,7 +6,6 @@ class UsersController < ApplicationController
     end
 
     def create
-        puts "SOMERANDOM TEXT"
         user = User.new(user_params)
         if user.save
             session[:user_id] = user.id
