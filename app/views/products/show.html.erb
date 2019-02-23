@@ -24,7 +24,9 @@
           <dd><%= @product.price %></dd>
         </dl>
         <h3>Reviews</h3>  
+       
         <% if current_user %>    
+         
          <%= form_for @review do |f| %>
         
          <div class="form-group">
