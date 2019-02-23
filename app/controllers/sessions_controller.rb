@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
 
     def create
         @user = User.find_by_email(user_params[:email])
-        puts "helloooooo #{@user.inspect}"
         #if user exists and the password is correct.
 
         if @user && @user.authenticate(user_params[:password])

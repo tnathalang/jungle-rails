@@ -23,9 +23,37 @@
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
         </dl>
+        <h3>Reviews</h3>  
+        <% if current_user %>    
+         <%= form_for @review do |f| %>
+        
+         <div class="form-group">
+            <%= f.label :description%> |
+            <%= f.label :rating%>
+            <%= select_tag :rating, options_for_select([1,2,3,4,5,6,7,8,9,10])%>
+            <%= f.text_field :description, class: 'form-control'%>
+         </div>
+         
+
+         <%= f.submit 'Add review', class: 'btn btn-primary' %>
+
+         <%end%>
+        <%end%>
+          <% @product.reviews.each do |review| %>
+            <dl class="dl-horizontal">
+              <dt>Rating</dt>
+              <dd><%= review.rating %></dd>
+              <dt>Description</dt>
+              <dd><%= review.description %></dd>
+              <dt>Create By</dt>
+              <dd><%= review.user.name %></dd>
+            </dl>
+          <% end %>
       </div>
     </div>
 
   </article>
 
 </section>
+
+<%= console %>
