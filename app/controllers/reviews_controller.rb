@@ -1,28 +1,33 @@
 class ReviewsController < ApplicationController
-  def new
-  end
-
+ 
   def create
-    product = Product.find(paramns[:product_id])
+    puts "=============PARAMS============="
+    puts params
+    product = Product.find(params[:product_id])
     review = Review.new(review_params)
     review.product = product
 
-    product.review.new(review_params)
-    
     if review.save
-      #/products/:id/
-      redirect_to product_path(params[:product_id])
+    redirect_to product_path(params[:product_id]), notice: "Review Posted"
     end
+    puts review.errors.full_messages
   end
 
 
-
-  private
+private
 
   def review_params
-    params.require(:review).permit(:description, :rating)
+    params.require(:review).permit(
+      :description, 
+      :rating, 
+      :user_id,
+      :product_id
+      )
   end
 
-
-
 end
+
+
+
+
+
