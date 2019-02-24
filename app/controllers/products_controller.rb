@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
     @product = Product.find params[:id]
     @reviews = @product.reviews.order(created_at: :asc)
     @review = Review.new
+    @review.user = current_user
   end
 
   def new

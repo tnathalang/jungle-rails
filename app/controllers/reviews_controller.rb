@@ -14,6 +14,16 @@ class ReviewsController < ApplicationController
    end
   end
 
+  def destroy
+    review = Review.find(params[:id])
+
+    if review.destroy
+      redirect_to product_path(params[:product_id]), notice: "Review deleted"
+    else
+      redirect_to product_path(params[:product_id]), notice: "Could not delete the comment"
+    end
+  end
+
 
 private
 
