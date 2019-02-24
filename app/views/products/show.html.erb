@@ -51,7 +51,7 @@
               <dt>Create By</dt>
               <dd><%= @review.user.name %></dd>
               <tr>
-                <td><%= link_to 'Delete', [@product, review],method: :delete, data: {confirm: "Are you sure?"}   %>
+                <td><%= link_to 'Delete', [@product, review],method: :delete, data: {confirm: "Are you sure?"},class: 'btn btn-primary'  %>
                 </td>
               </tr>
             </dl>

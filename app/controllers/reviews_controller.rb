@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
     else
       redirect_to product_path(params[:product_id]), notice: "Could not delete the comment"
     end
-  end
+  end 
 
 
 private
