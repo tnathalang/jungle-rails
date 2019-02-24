@@ -8,9 +8,10 @@ class ReviewsController < ApplicationController
     review.product = product
 
     if review.save
-    redirect_to product_path(params[:product_id]), notice: "Review Posted"
-    end
-    puts review.errors.full_messages
+      redirect_to product_path(params[:product_id]), notice: "Review Posted"
+    else 
+      redirect_to product_path(params[:product_id]), notice: review.errors.full_messages
+   end
   end
 
 
