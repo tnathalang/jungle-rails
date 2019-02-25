@@ -1,29 +1,19 @@
 
-        <% if current_user %>    
-         
-         <%= form_for [@product, @review] do |f| %>
-    
-         <div class="form-group">
-            <%= f.label :description%> |
-            <%= f.label :rating%>
-            <%= f.select :rating, [1,2,3,4,5,6,7,8,9,10]%>
-            <%= f.text_field :description, class: 'form-control'%>
-         </div>
-         <%= f.submit 'Add review', class: 'btn btn-primary' %>
-         <%end%>
-        <%end%>
-          <% @reviews.each do |review| %>
-            <dl class="dl-horizontal">
-              <dt>Rating</dt>
-              <dd><%= review.rating.times do %></dd>
-              <span class="glyphicon glyphicon-star"></span>
-              <%end%>
-              <dt>Description</dt>
-              <dd><%= review.description %></dd>
-              <dt>Create By</dt>
-              <dd><%= review.user.name %></dd>
-            <% if current_user.name == review.user.name%>
-              <dd><%= link_to 'Delete', [@product, review],method: :delete, data: {confirm: "Are you sure?"},class: 'btn btn-danger btn-xs'  %></dd>
-            <% end %>
-            </dl>
-          <% end %>
+ <dl class="dl-horizontal">
+  <dt>Rating</dt>
+   <dd>
+   <% review.rating.times do %>
+   <span class="glyphicon glyphicon-star"></span>
+<%end%>
+ <% (10 - review.rating).times do %>
+<span class="glyphicon glyphicon-star-empty"></span>
+ <%end%>
+  </dd>
+<dt>Description</dt>
+ <dd><%= review.description %></dd>
+ <dt>Create By</dt>
+<dd><%= review.user.name %></dd>
+<% if current_user == review.user%>
+<dd><%= link_to 'Delete', [@product, review],method: :delete, data: {confirm: "Are you sure?"},class: 'btn btn-danger btn-xs'  %></dd>
+<% end %>
+</dl>
