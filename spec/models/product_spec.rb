@@ -15,7 +15,7 @@ RSpec.describe Product, type: :model do
     end
     it 'Should have a price' do
       @product.price_cents = nil 
-      expect(@product).to_not be_valid
+    expect(@product).to_not be_valid
     end
     it 'Should have a quantity' do
       @product.quantity = nil 
