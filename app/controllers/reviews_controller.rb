@@ -2,10 +2,11 @@ class ReviewsController < ApplicationController
  
   def create
     puts "=============PARAMS============="
-    puts params
+    puts current_user.inspect
     product = Product.find(params[:product_id])
     review = Review.new(review_params)
     review.product = product
+    review.user = current_user
 
     if review.save
       redirect_to product_path(params[:product_id]), notice: "Review Posted"

@@ -3,15 +3,11 @@
   <header class="page-header">
     <h1><%= link_to @product.category.name, @product.category %> &raquo; <%= @product.name %></h1>
   </header>
-
   <article class="product-detail">
-
     <div class="row">
-
       <div class="col-sm-4">
         <%= image_tag @product.image.url, class: 'main-img' %>
       </div>
-
       <div class="col-sm-8">
         <dl class="dl-horizontal">
           <dt>Name</dt>
@@ -24,44 +20,10 @@
           <dd><%= @product.price %></dd>
         </dl>
         <h3>Reviews</h3>  
-       
-        <% if current_user %>    
-         
-         <%= form_for [@product, @review] do |f| %>
-    
-         <div class="form-group">
-            <%= f.label :description%> |
-            <%= f.label :rating%>
-            <%= f.select :rating, [1,2,3,4,5,6,7,8,9,10]%>
-            <%= f.text_field :description, class: 'form-control'%>
-            <%= "#{@review.user.name} is making the review"%>
-         </div>
-         
-
-         <%= f.submit 'Add review', class: 'btn btn-primary' %>
-
-         <%end%>
-        <%end%>
-          <% @product.reviews.each do |review| %>
-            <dl class="dl-horizontal">
-              <dt>Rating</dt>
-              <dd><%= review.rating %></dd>
-              <dt>Description</dt>
-              <dd><%= review.description %></dd>
-              <dt>Create By</dt>
-              <dd><%= @review.user.name %></dd>
-              <% if current_user.name = @reivew.user.name%>
-              <tr>
-                <td><%= link_to 'Delete', [@product, review],method: :delete, data: {confirm: "Are you sure?"},class: 'btn btn-primary'  %>
-                </td>
-              </tr>
-            </dl>
-          <% end %>
+        <%= render @reviews%>
       </div>
     </div>
-
   </article>
-
 </section>
 
 <%= console %>
