@@ -22,12 +22,13 @@ RSpec.describe User, type: :model do
       it 'Should validate that email is caseinsensitive' do
         @user.email = "Monka@s.pepe"
         @user.valid?
-        expect(@user.errors.full_messages).to include("BLAH")
+        
+        expect(@user.errors.full_messages).to be_empty
       end
       it 'Should have no whitespace' do 
         @user.email = " example@domain.com "
         @user.valid?
-      expect(@user.errors.full_messages).to include("BLAH")
+      expect(@user.errors.full_messages).to be_empty
       end
     end
   end 
