@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
     def create
         #if user exists and the password is correct.
-        if @user =  User.authenticate_with_credentials(user_params[:email].downcase , user_params[:password])
+        if @user =  User.authenticate_with_credentials(user_params[:email].downcase.strip , user_params[:password])
             #save user id inside browser cookie.
             session[:user_id] = @user.id
             redirect_to root_path

@@ -18,8 +18,13 @@ class User < ActiveRecord::Base
     end 
 
     def strip_whitespace
-        self.email = self.email.strip
-        self.name = self.name.strip
+        if self.email
+            self.email = self.email.strip
+        end
+       
+        if self.name 
+            self.name = self.name.strip
+        end
     end
 
     def downcase_email
