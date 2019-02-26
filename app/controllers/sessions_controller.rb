@@ -10,8 +10,9 @@ class SessionsController < ApplicationController
             session[:user_id] = @user.id
             redirect_to root_path
         else
-            @user = User.new
-            render :new, notice: "Wrong email or password"
+            @user = User.new(user_params)
+            @user.errors.add(:credentials, "Invalid email or password")
+            render :new 
         end
     end
 
