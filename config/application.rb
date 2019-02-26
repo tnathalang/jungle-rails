@@ -35,7 +35,6 @@ module Jungle
       g.assets       false
     end
 
-    config.assets.digest = true
     # config/application.rb
     config.assets.initialize_on_precompile = false
 
