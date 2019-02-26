@@ -4,16 +4,14 @@ class SessionsController < ApplicationController
     end
 
     def create
-       
         #if user exists and the password is correct.
-
-        if user =  User.authenticate_with_credentials(params[:email], params[:password])
-            #save uder id inside browser cookie.
+        if @user =  User.authenticate_with_credentials(user_params[:email].downcase , user_params[:password])
+            #save user id inside browser cookie.
             session[:user_id] = @user.id
             redirect_to root_path
         else
-            flash.now.alert = "Incorrect email or password, try again."
-            redirect_to "/login"
+            @user = User.new
+            render :new, notice: "Wrong email or password"
         end
     end
 

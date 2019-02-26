@@ -19,7 +19,16 @@ RSpec.describe User, type: :model do
     end
     
     describe '.authenticate_with_credentials' do 
-
+      it 'Should validate that email is caseinsensitive' do
+        @user.email = "monka@s.pepe"
+        @user.email = "Monka@S.pepe"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("BLAH")
+      end
+      it 'Should have no whitespace' do 
+        @user.email = " example@domain.com "
+        @user.valid?
+      expect(@user.errors.full_messages).to include("BLAH")
     end
   end 
 end
