@@ -2,6 +2,17 @@
 
 A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
 
+# Screenshot
+
+!["Screenshot of chatty messages in action!"](https://github.com/tnathalang/jungle-rails/blob/master/image/Screen%20Shot%202019-04-14%20at%207.32.25%20AM.png?raw=true)
+!["Screenshot of chatty messages in action!"](https://github.com/tnathalang/jungle-rails/blob/master/image/Screen%20Shot%202019-04-14%20at%207.34.20%20AM.png?raw=true)
+!["Screenshot of chatty messages in action!"](https://github.com/tnathalang/jungle-rails/blob/master/image/Screen%20Shot%202019-04-14%20at%207.34.53%20AM.png?raw=true
+
+
+
+
+
+
 
 ## Setup
 
